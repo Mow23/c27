@@ -1,6 +1,7 @@
 const Engine = Matter.Engine;
 const World= Matter.World;
 const Bodies = Matter.Bodies;
+const Constraint = Matter.Constraint
 
 var engine, world;
 var box1, pig1;
@@ -14,8 +15,8 @@ function setup(){
     var canvas = createCanvas(1200,400);
     engine = Engine.create();
     world = engine.world;
-
-    
+   
+       
     ground = new Ground(600,height,1200,20)
 
     box1 = new Box(700,320,70,70);
@@ -35,6 +36,8 @@ function setup(){
 
     bird = new Bird(100,100);
 
+    log = new Log (150,320,100,PI/2);
+    catapult = new constraint (bird.body, log.body);
     table = new Ground(30,350,530,200);
 }
 
@@ -60,5 +63,7 @@ function draw(){
     log5.display();
 
     bird.display();
+    log.display();
     table.display();
+    catapult.display();
 }
